@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 class MaskedScaledDotProductAttention(nn.Module):
     def __init__(self, dropout=0.1):
-        super.__init__()
+        super().__init__()
         self.dropout = nn.Dropout(dropout)
 
     def create_mask(self, seq_len, device):

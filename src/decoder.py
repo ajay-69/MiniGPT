@@ -3,7 +3,7 @@ import torch.nn as nn
 class FeedForward(nn.Module):
     def __init__(self, d_model, hidden_dim, dropout=0.1):
         super().__init__()
-        self.fc1 = nn.Linear(d_model, hidden_dim),
+        self.fc1 = nn.Linear(d_model, hidden_dim)
         self.activation = nn.GELU()
         self.dropout = nn.Dropout(dropout)
         self.fc2 = nn.Linear(hidden_dim, d_model)
