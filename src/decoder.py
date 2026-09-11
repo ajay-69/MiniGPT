@@ -15,7 +15,7 @@ class FeedForward(nn.Module):
         x = self.fc2(x)
         return x
 
-from attention import MaskedMultiHeadAttention
+from .attention import MaskedMultiHeadAttention
 
 class DecoderBlock(nn.Module):
     def __init__(self, d_model, num_heads, hidden_dim, dropout=0.1):

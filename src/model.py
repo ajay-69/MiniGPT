@@ -1,6 +1,6 @@
 import torch 
 import torch.nn as nn
-from config import GPTConfig
+from .config import GPTConfig # . means Look in the same package/directory.
 from decoder import DecoderBlock
 config = GPTConfig()
 
