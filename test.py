@@ -4,6 +4,7 @@ from src.model import MiniGPT
 
 config = GPTConfig()
 model = MiniGPT(config)
+print("Embedding std:", model.token_embedding.weight.std().item())
 
 input_ids = torch.randint(
     0,
