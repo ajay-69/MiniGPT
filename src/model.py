@@ -21,7 +21,6 @@ class MiniGPT(nn.Module):
         ])
 
         self.final_norm = nn.LayerNorm(config.d_model)
-
         self.lm_head = nn.Linear(config.d_model, config.vocab_size, bias=False)
 # GPT-2 does not use a bias term in the output projection because the shared 
 # embedding weights (which we'll add next) already provide enough flexibility.
