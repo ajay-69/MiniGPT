@@ -1,7 +1,7 @@
 import torch 
 import torch.nn as nn
 from .config import GPTConfig # . means Look in the same package/directory.
-from decoder import DecoderBlock
+from .decoder import DecoderBlock
 config = GPTConfig()
 
 class MiniGPT(nn.Module):
