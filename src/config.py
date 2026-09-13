@@ -11,5 +11,5 @@ class GPTConfig:
     dropout: float = 0.1
     learning_rate: float = 3e-4
     batch_size: int = 32
-    epochs: int = 10
-    device: str = "cuda"
+    epochs: int = 2
+    device: str = "auto"
