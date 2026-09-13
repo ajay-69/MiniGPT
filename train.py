@@ -8,6 +8,7 @@ from src.config import GPTConfig
 from src.dataset import GPTDataset
 from src.model import MiniGPT
 from src.trainer import Trainer
+from src.utils import save_checkpoint
 
 
 # --------------------------------------------------
@@ -157,7 +158,7 @@ trainer = Trainer(
 # --------------------------------------------------
 # Training
 # --------------------------------------------------
-
+best_val_loss = float("inf")
 for epoch in range(config.epochs):
 
     train_loss = trainer.train_one_epoch()
@@ -168,3 +169,31 @@ for epoch in range(config.epochs):
         f"| Train Loss: {train_loss:.4f} "
         f"| Val Loss: {val_loss:.4f}"
     )
+
+    # Save latest checkpoint
+    save_checkpoint(
+        model=model,
+        optimizer=optimizer,
+        scheduler=scheduler,
+        epoch=epoch + 1,
+        train_loss=train_loss,
+        val_loss=val_loss,
+        path="checkpoints/latest.pt"
+    )
+
+    # Save best model
+    if val_loss < best_val_loss:
+
+        best_val_loss = val_loss
+
+        save_checkpoint(
+            model=model,
+            optimizer=optimizer,
+            scheduler=scheduler,
+            epoch=epoch + 1,
+            train_loss=train_loss,
+            val_loss=val_loss,
+            path="checkpoints/best.pt"
+        )
+
+        print("✓ Best model saved.")

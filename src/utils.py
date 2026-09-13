@@ -2,7 +2,10 @@ import os
 import torch
 
 
-def save_checkpoint(model, optimizer, scheduler,
+def save_checkpoint(
+    model,
+    optimizer,
+    scheduler,
     epoch,
     train_loss,
     val_loss,
@@ -21,10 +24,10 @@ def save_checkpoint(model, optimizer, scheduler,
         "val_loss": val_loss,
     }
 
-    os.makedirs(
-        os.path.dirname(path),
-        exist_ok=True
-    )
+    directory = os.path.dirname(path)
+
+    if directory:
+        os.makedirs(directory, exist_ok=True)
 
     torch.save(checkpoint, path)
 
